@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
+<style>
+    [data-description] {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 5;
+        position: relative;
+    }
+</style>
 
 <body class="bg-gray-50">
 
@@ -48,26 +58,27 @@
 
     <!-- Template for UMKM Card -->
     <template id="umkm-card-template">
-      <div class="w-[350px] h-[550px] bg-white rounded-[15px] overflow-hidden shadow-lg relative mx-auto">
-        <img data-image alt="" class="w-[333px] h-[300px] mx-auto mt-2 rounded-xl" />
-        <div data-category class="absolute top-4 left-4 bg-stone-300/50 rounded-full px-3 py-1"></div>
-        <h2 data-name class="text-[20px] font-medium text-black mt-3 ml-4"></h2>
-        <p data-address class="text-[10px] text-black mt-1 ml-4 w-[85%]"></p>
-        <div class="flex items-center justify-end mr-4 mt-1">
-          <img src="/images/icons/jam.png" alt="Jam Icon" class="w-4 h-4 mr-1" />
-          <span data-hours class="text-[13px] font-medium text-black"></span>
+        <div class="w-[350px] h-[550px] bg-white rounded-[15px] overflow-hidden shadow-lg relative mx-auto">
+            <img data-image alt="" class="w-[333px] h-[300px] mx-auto mt-2 rounded-xl" />
+            <div data-category class="absolute top-4 left-4 bg-stone-300/50 rounded-full px-3 py-1"></div>
+            <h2 data-name class="text-[20px] font-medium text-black mt-3 ml-4"></h2>
+            <p data-address class="text-[10px] text-black mt-1 ml-4 w-[85%]"></p>
+            <div class="flex items-center justify-end mr-4 mt-1">
+                <img src="/images/icons/jam.png" alt="Jam Icon" class="w-4 h-4 mr-1" />
+                <span data-hours class="text-[13px] font-medium text-black"></span>
+            </div>
+            <p data-description class="text-xs text-zinc-500 mt-2 mx-4"></p>
+            <div class="flex justify-between items-center mt-4 px-4">
+                <span data-price class="text-sm font-semibold text-black"></span>
+                <a href="#" data-link
+                    class="relative bg-black text-white rounded-full flex items-center px-4 py-1.5 font-medium text-xs">
+                    Selengkapnya
+                    <span class="w-5 h-5 flex items-center justify-center ml-1">
+                        <img src="images/icons/selengkapnya.png" alt="Arrow Icon" class="w-[15px] h-[15px]" />
+                    </span>
+                </a>
+            </div>
         </div>
-        <p data-description class="text-xs text-zinc-500 mt-2 mx-4"></p>
-        <div class="flex justify-between items-center mt-4 px-4">
-          <span data-price class="text-sm font-semibold text-black"></span>
-          <a href="#" data-link class="relative bg-black text-white rounded-full flex items-center px-4 py-1.5 font-medium text-xs">
-            Selengkapnya
-            <span class="w-5 h-5 flex items-center justify-center ml-1">
-              <img src="images/icons/selengkapnya.png" alt="Arrow Icon" class="w-[15px] h-[15px]" />
-            </span>
-          </a>
-        </div>
-      </div>
     </template>
 
     <!-- UMKM Grid -->
@@ -85,7 +96,8 @@
                 Kami menyediakan kemudahan bagi pelaku usaha lokal atau Penyandang UMKM yang ingin menjual produk
                 terampil. Daftarkan UMKM Anda.
             </p>
-            <button class="bg-amber-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-700 transition duration-300">
+            <button
+                class="bg-amber-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-700 transition duration-300">
                 Daftar Sekarang
             </button>
             <div class="mt-6 text-center text-gray-500 text-sm">
@@ -95,7 +107,8 @@
     </section>
 
     <footer class="bg-white border-t pt-8 pb-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-y-8">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-y-8">
             <div class="flex items-center space-x-3">
                 <img src="images/logo.png" alt="UMKM Panaikang" class="w-10 h-10">
                 <span class="text-base font-bold text-gray-800">UMKM PANAIKANG</span>
@@ -106,9 +119,12 @@
                 <a href="#" class="text-gray-700 hover:text-amber-600">Tentang Kami</a>
             </div>
             <div class="flex space-x-4">
-                <a href="#" class="p-2 rounded-full border border-gray-300 hover:bg-gray-100 text-gray-700"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="p-2 rounded-full border border-gray-300 hover:bg-gray-100 text-gray-700"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="p-2 rounded-full border border-gray-300 hover:bg-gray-100 text-gray-700"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="p-2 rounded-full border border-gray-300 hover:bg-gray-100 text-gray-700"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="#" class="p-2 rounded-full border border-gray-300 hover:bg-gray-100 text-gray-700"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="#" class="p-2 rounded-full border border-gray-300 hover:bg-gray-100 text-gray-700"><i
+                        class="fab fa-youtube"></i></a>
             </div>
         </div>
     </footer>
@@ -137,7 +153,38 @@
 
         function formatTime(dateString) {
             const d = new Date(dateString);
-            return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+            return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+        }
+
+        function clampDescriptions() {
+            const els = document.querySelectorAll('[data-description]');
+            els.forEach(el => {
+                const fullText = el.textContent.trim();
+                const style = getComputedStyle(el);
+                const lineHeight = parseFloat(style.lineHeight);
+                const maxHeight = lineHeight * 5;
+
+                if (el.scrollHeight > maxHeight) {
+                    let lo = 0, hi = fullText.length, mid;
+                    while (lo < hi) {
+                        mid = Math.floor((lo + hi) / 2);
+                        el.textContent = fullText.slice(0, mid) + 'see more';
+                        if (el.scrollHeight > maxHeight) hi = mid - 1;
+                        else lo = mid + 1;
+                    }
+                    // terapkan trim akhir
+                    const truncated = fullText.slice(0, lo - 1).trim();
+                    el.textContent = truncated + 'see more ';
+                    // buat link see more
+                    const moreLink = document.createElement('span');
+                    moreLink.textContent = 'see more';
+                    moreLink.className = 'text-amber-600 cursor-pointer underline';
+                    moreLink.addEventListener('click', () => {
+                        el.textContent = fullText;
+                    });
+                    el.appendChild(moreLink);
+                }
+            });
         }
 
         async function loadUMKMs() {
