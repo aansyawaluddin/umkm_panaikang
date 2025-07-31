@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail UMKM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-white text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+            <div class="flex items-center space-x-3">
+                <img src="images/logo.png" alt="Logo" class="h-8 w-8" />
+                <span class="font-bold text-lg">UMKM PANAIKANG</span>
+            </div>
+            <nav class="space-x-6 text-sm font-medium">
+                <a href="index.html" class="hover:text-yellow-600">Kategori</a>
+                <a href="produk.html" class="hover:text-yellow-600">Produk UMKM</a>
+                <a href="umkm.html" class="hover:text-yellow-600">UMKM</a>
+                <a href="about.html" class="hover:text-yellow-600">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="min-h-screen">
+        <!-- Detail UMKM -->
+        <template id="umkm-detail-template">
+            <section class="relative bg-[#feebd4] w-full">
+                <img id="detail-banner" src="" alt="Banner" class="w-full object-cover h-64" />
+                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-start p-8 relative">
+                    <div class="md:col-span-1 flex justify-center -mt-32 relative">
+                        <img id="detail-avatar" src="" alt="Avatar"
+                            class="rounded-full border-[6px] border-white shadow-xl w-60 h-60 object-cover" />
+                    </div>
+                    <div class="md:col-span-2 space-y-6">
+                        <div class="flex justify-between items-center">
+                            <span id="detail-kategori"
+                                class="bg-[#E2D4AA] text-gray-800 text-sm font-medium px-4 py-1 rounded-full"></span>
+                            <div
+                                class="flex items-center space-x-2 bg-[#f5e5c8] text-gray-800 text-sm font-medium px-4 py-2 rounded-full">
+                                <img src="/images/icons/jam.png" alt="Jam Icon" class="w-4 h-4 mr-1" />
+                                <span id="detail-jam"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <h1 id="detail-nama" class="text-4xl font-bold text-gray-900"></h1>
+                            <p id="detail-pemilik" class="text-sm text-gray-600 font-medium uppercase"></p>
+                        </div>
+                        <p id="detail-deskripsi"
+                            class="relative bg-[#FFF6EA] rounded-lg text-gray-700 leading-relaxed pl-5 py-4">
+                            <span class="absolute left-0 top-0 h-full w-2 bg-[#d3b56d] rounded-l-full"></span>
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex space-x-4">
+                                <div class="relative inline-flex items-center bg-[#FFF6EA] p-4 rounded-lg">
+                                    <span class="absolute left-0 top-0 h-full w-2 bg-[#d3b56d] rounded-l-full"></span>
+                                    <i class="fab fa-instagram text-2xl text-green-600 mr-4"></i>
+                                    <span id="detail-ig" class="text-gray-800 font-medium"></span>
+                                </div>
+                                <div class="relative inline-flex items-center bg-[#FFF6EA] p-4 rounded-lg">
+                                    <span class="absolute left-0 top-0 h-full w-2 bg-[#d3b56d] rounded-l-full"></span>
+                                    <i class="fas fa-phone-alt text-2xl text-green-600 mr-4"></i>
+                                    <span id="detail-wa" class="text-gray-800 font-medium"></span>
+                                </div>
+                            </div>
+                            <div class="relative bg-[#FFF6EA] p-4 rounded-lg">
+                                <span class="absolute left-0 top-0 h-full w-2 bg-[#d3b56d] rounded-l-full"></span>
+                                <p id="detail-alamat" class="ml-4 text-gray-800"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+        <div id="detail-container">
+            <div id="detail-container" class="flex items-center justify-center min-h-screen">
+                <p class="text-center text-gray-500">Memuat Data UMKM...</p>
+            </div>
+
+        </div>
+
+        <!-- Products Section (kept layout) -->
+        <section id="products-section" class="$1 hidden mt-10">
+            <h2 class="text-2xl font-semibold mb-6 text-center">DAFTAR PRODUK</h2>
+            <template id="product-card-template">
+                <div
+                    class="group bg-white rounded-lg shadow-sm overflow-hidden transition duration-300 hover:shadow-md relative">
+                    <div
+                        class="hidden group-hover:flex absolute inset-0 bg-[#3A3A3A] bg-opacity-90 text-white items-center justify-center text-sm font-medium rounded-lg">
+                        Lihat Produk
+                    </div>
+                    <div class="aspect-square bg-gray-200 flex items-center justify-center">
+                        <img data-src class="w-full h-full object-cover" alt="">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1" data-name></h3>
+                        <p class="text-sm text-gray-500 mb-2" data-umkm></p>
+                        <p class="text-lg font-bold text-amber-600" data-price></p>
+                    </div>
+                </div>
+            </template>
+            <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <p class="text-center text-gray-500 col-span-full">Memuat produk...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Script -->
+    <script>
+        const API_URL = 'https://script.google.com/macros/s/AKfycbwJMt9q_sR4QHWeN3FTjLiyfzIdy63oIFhoXa4RfrkpMtgR5JY1jIO7ZVnfUxNhBqGV/exec';
+        const params = new URLSearchParams(window.location.search);
+        const umkmId = params.get('id');
+
+        function formatTime(str) {
+            const d = new Date(str);
+            return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+        }
+
+        async function init() {
+            // loading states
+            const detailCont = document.getElementById('detail-container');
+            detailCont.innerHTML = '<p class="text-center text-gray-500">Memuat detail...</p>';
+            const prodSection = document.getElementById('products-section');
+            const prodCont = document.getElementById('product-list');
+            prodCont.innerHTML = '<p class="text-center text-gray-500 col-span-full">Memuat produk...</p>';
+            prodSection.classList.add('hidden');
+
+            try {
+                const [katRes, umkmRes, prodRes] = await Promise.all([
+                    fetch(`${API_URL}?table=kategori`),
+                    fetch(`${API_URL}?table=umkm`),
+                    fetch(`${API_URL}?table=produks`)
+                ]);
+                if (!katRes.ok || !umkmRes.ok || !prodRes.ok) throw new Error('Gagal memuat data server.');
+
+                const { data: katData } = await katRes.json();
+                const { data: umkmData } = await umkmRes.json();
+                const { data: prodData } = await prodRes.json();
+
+                const katMap = Object.fromEntries(katData.map(k => [String(k.id), k.name]));
+                const u = umkmData.find(x => String(x.id) === umkmId);
+                if (!u) throw new Error('UMKM tidak ditemukan.');
+
+                // Render detail
+                const tpl = document.getElementById('umkm-detail-template');
+                const clone = tpl.content.cloneNode(true);
+                clone.getElementById('detail-banner').src = u.banner || '/images/detail.png';
+                clone.getElementById('detail-avatar').src = u.image;
+                clone.getElementById('detail-kategori').textContent = katMap[String(u.kategori_id)] || '-';
+                clone.getElementById('detail-jam').textContent = `${formatTime(u.jam_buka)} – ${formatTime(u.jam_tutup)}`;
+                clone.getElementById('detail-nama').textContent = u.name;
+                clone.getElementById('detail-pemilik').textContent = u.owner_name || '';
+                clone.getElementById('detail-deskripsi').textContent = u.description || '';
+                clone.getElementById('detail-ig').textContent = u.instagram || '-';
+                clone.getElementById('detail-wa').textContent = u.whatsapp || '';
+                clone.getElementById('detail-alamat').textContent = u.address || '';
+                detailCont.innerHTML = '';
+                detailCont.appendChild(clone);
+
+                // Render products
+                const filtered = prodData.filter(p => String(p.umkm_id) === umkmId);
+                prodCont.innerHTML = '';
+                if (filtered.length === 0) {
+                    prodCont.innerHTML = '<p class="text-center text-gray-500 col-span-full">Belum ada produk.</p>';
+                } else {
+                    const cardTpl = document.getElementById('product-card-template');
+                    filtered.forEach(p => {
+                        const card = cardTpl.content.cloneNode(true);
+                        card.querySelector('[data-src]').src = p.image1;
+                        card.querySelector('[data-name]').textContent = p.name;
+                        card.querySelector('[data-umkm]').textContent = u.name;
+                        card.querySelector('[data-price]').textContent = `Rp ${Number(p.price).toLocaleString('id')}`;
+                        prodCont.appendChild(card);
+                    });
+                }
+
+                // show products section
+                prodSection.classList.remove('hidden');
+
+            } catch (err) {
+                console.error(err);
+                detailCont.innerHTML = `<p class="text-center text-red-500">Error: ${err.message}</p>`;
+                prodCont.innerHTML = '';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+
+</html>

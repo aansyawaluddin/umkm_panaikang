@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMKM Panaikang - Jelajahi Katalog UMKM Desa Panaikang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header/Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center">
+                        <img src="images/logo.png" alt="Ilustrasi" class="w-24 h-24 object-contain">
+                    </div>
+                    <span class="ml-3 text-xl font-bold text-gray-800">UMKM PANAIKANG</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-amber-600">Kategori</a>
+                    <a href="produk.html" class="text-gray-700 hover:text-amber-600">Produk UMKM</a>
+                    <a href="umkm.html" class="text-gray-700 hover:text-amber-600">UMKM</a>
+                    <a href="about.html" class="text-gray-700 hover:text-amber-600">About</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="md:hidden bg-white border-t px-4 py-4 space-y-2 hidden">
+        <a href="index.html" class="block text-gray-700 hover:text-amber-600 font-medium py-2">Kategori</a>
+        <a href="produk.html" class="block text-gray-700 hover:text-amber-600 font-medium py-2">Produk UMKM</a>
+        <a href="umkm.html" class="block text-gray-700 hover:text-amber-600 font-medium py-2">UMKM</a>
+        <a href="about.html" class="block text-gray-700 hover:text-amber-600 font-medium py-2">About</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center h-[600px]" style="background-image: url('images/home.png')">
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+            <div class="bg-[#FFF3E3] p-10 max-w-xl ml-8">
+                <p class="text-gray-700 text-sm font-semibold mb-2 uppercase">Temukan Produk Unggulan UMKM</p>
+                <h1 class="text-3xl lg:text-4xl font-semibold text-yellow-800 mb-4 leading-tight">
+                    Jelajahi Katalog UMKM<br>Desa Panaikang
+                </h1>
+                <p class="text-gray-700 mb-6 leading-relaxed">
+                    Dukung produk lokal dari para pelaku UMKM di Desa Panaikang, Sinjai Timur.
+                    Temukan aneka jajanan, kerajinan bambu, kuliner rumahan, dan lainnya dalam satu platform digital.
+                </p>
+                <button
+                    class="bg-yellow-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-yellow-800 transition duration-300">
+                    LIHAT PRODUK
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Kategori Produk Unggulan Desa Panaikang</h2>
+                <p class="text-gray-600">Dukung pelaku UMKM lokal dengan beragam produk khas Desa Panaikang.</p>
+            </div>
+
+            <!-- Template Kategori -->
+            <template id="template-kategori">
+                <div class="group cursor-pointer">
+                    <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 aspect-square">
+                        <div
+                            class="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                            <i class="fas fa-tags text-4xl text-gray-600"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 text-center">__NAME__</h3>
+                    <p class="text-sm text-gray-500 mt-2 text-center">__DESC__</p>
+                </div>
+            </template>
+
+            <div id="kategori-list" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-12 text-center">
+                Produk UMKM Unggulan Desa Panaikang
+            </h2>
+
+            <!-- Template Produk -->
+            <template id="template-produk">
+                <div
+                    class="group bg-white rounded-lg shadow-sm overflow-hidden transition duration-300 hover:shadow-md relative">
+                    <div
+                        class="hidden group-hover:flex absolute inset-0 bg-[#3A3A3A] bg-opacity-90 text-white items-center justify-center text-sm font-medium rounded-lg transition duration-300">
+                        Lihat Produk
+                    </div>
+                    <div class="aspect-square bg-gray-200 flex items-center justify-center">
+                        <img src="__IMG__" alt="__NAME__" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">__NAME__</h3>
+                        <p class="text-sm text-gray-500 mb-2">__UMKM__</p>
+                        <p class="text-lg font-bold text-amber-600">Rp __PRICE__</p>
+                    </div>
+                </div>
+            </template>
+
+            <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"></div>
+
+            <!-- Show More Button -->
+            <div class="text-center">
+                <a href="produk.html">
+                    <button
+                        class="border border-amber-600 text-amber-600 px-8 py-3 rounded-lg font-semibold hover:bg-amber-600 hover:text-white transition duration-300">
+                        Show More
+                    </button>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Tertarik Mendaftarkan UMKM Anda?</h2>
+            <p class="text-gray-600 text-lg mb-8">
+                Kami menyediakan kemudahan bagi pelaku usaha lokal atau Penyandang UMKM yang ingin menjual produk
+                terampil. Daftarkan UMKM Anda.
+            </p>
+            <button
+                class="bg-amber-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-700 transition duration-300">
+                Daftar Sekarang
+            </button>
+            <div class="mt-6 text-center text-gray-500 text-sm">
+                © 2024 UMKM Panaikang. All rights reserved.
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t pt-8 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-y-8">
+
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="images/logo.png" alt="UMKM Panaikang" class="w-10 h-10">
+                    <span class="text-base font-bold text-gray-800">UMKM PANAIKANG</span>
+                </div>
+
+                <!-- Navigasi Tengah -->
+                <div class=" space-x-10 text-center">
+                    <a href="#" class="text-gray-700 hover:text-amber-600">Beranda</a>
+                    <a href="#" class="text-gray-700 hover:text-amber-600">Kategori</a>
+                    <a href="#" class="text-gray-700 hover:text-amber-600">Tentang Kami</a>
+                </div>
+
+                <!-- Ikon Sosial Media -->
+                <div class="flex space-x-4">
+                    <a href="#" class="p-2 rounded-full border border-gray-300 hover:bg-gray-100 text-gray-700">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="p-2 rounded-full border border-gray-300 hover:bg-gray-100 text-gray-700">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="p-2 rounded-full border border-gray-300 hover:bg-gray-100 text-gray-700">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        const API_URL = "https://script.google.com/macros/s/AKfycbwJMt9q_sR4QHWeN3FTjLiyfzIdy63oIFhoXa4RfrkpMtgR5JY1jIO7ZVnfUxNhBqGV/exec";
+
+        async function loadKategoris() {
+            const res = await fetch(`${API_URL}?table=kategori`);
+            const { data, error } = await res.json();
+            if (error) throw new Error(error);
+
+            const container = document.getElementById('kategori-list');
+            container.innerHTML = '';
+            const tpl = document.getElementById('template-kategori').innerHTML;
+
+            data.forEach(k => {
+                const html = tpl
+                    .replace('__NAME__', k.name)
+                    .replace('__DESC__', k.description || '');
+                container.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        async function loadUMKMMap() {
+            const res = await fetch(`${API_URL}?table=umkm`);
+            const { data } = await res.json();
+            return data.reduce((m, u) => { m[u.id] = u.name; return m; }, {});
+        }
+
+        async function loadProducts() {
+            const UMKMMap = await loadUMKMMap();
+            const res = await fetch(`${API_URL}?table=produks`);
+            const { data, error } = await res.json();
+            if (error) throw new Error(error);
+
+            const featured = data.filter(p => p.is_featured != false && p.is_featured != 'FALSE').slice(0, 8);
+            const container = document.getElementById('product-list');
+            container.innerHTML = '';
+            const tpl = document.getElementById('template-produk').innerHTML;
+
+            featured.forEach(p => {
+                let html = tpl
+                    .replace(/__IMG__/g, p.image1)
+                    .replace(/__NAME__/g, p.name)
+                    .replace(/__UMKM__/g, UMKMMap[p.umkm_id] || '-')
+                    .replace(/__PRICE__/g, Number(p.price).toLocaleString('id'));
+                container.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            try {
+                await loadKategoris();
+                await loadProducts();
+            } catch (err) {
+                console.error(err);
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk UMKM Panaikang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header/Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center">
+                        <img src="images/logo.png" alt="Ilustrasi" class="w-24 h-24 object-contain">
+                    </div>
+                    <span class="ml-3 text-xl font-bold text-gray-800">UMKM PANAIKANG</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-amber-600">Kategori</a>
+                    <a href="produk.html" class="text-gray-700 hover:text-amber-600">Produk UMKM</a>
+                    <a href="umkm.html" class="text-gray-700 hover:text-amber-600">UMKM</a>
+                    <a href="about.html" class="text-gray-700 hover:text-amber-600">About</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-700" id="mobile-menu-button">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-cover bg-center h-[300px]" style="background-image: url('images/produk.png')">
+        <div class="max-w-7xl mx-auto h-full grid grid-cols-3 items-center px-4 sm:px-6 lg:px-8">
+            <div></div>
+            <div class="flex justify-center transform -translate-y-8">
+                <h1 class="text-3xl lg:text-3xl font-bold text-black text-center">PRODUK UMKM</h1>
+            </div>
+            <div></div>
+        </div>
+    </section>
+
+    <!-- Template for Product Card -->
+    <template id="product-card-template">
+        <div class="group bg-white rounded-lg shadow-sm overflow-hidden transition duration-300 hover:shadow-md relative">
+            <div class="overlay hidden group-hover:flex absolute inset-0 bg-[#3A3A3A] bg-opacity-90 text-white items-center justify-center text-sm font-medium rounded-lg transition duration-300">
+                Lihat Produk
+            </div>
+            <div class="aspect-square bg-gray-200 flex items-center justify-center">
+                <img data-src class="w-full h-full object-cover" alt="">
+            </div>
+            <div class="p-4">
+                <h3 class="font-semibold text-gray-800 mb-1" data-name></h3>
+                <p class="text-sm text-gray-500 mb-2" data-umkm></p>
+                <p class="text-lg font-bold text-amber-600" data-price></p>
+            </div>
+        </div>
+    </template>
+
+    <!-- Products Grid -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"></div>
+            <div class="flex justify-center mt-12">
+                <div class="flex space-x-2">
+                    <button class="w-10 h-10 bg-amber-600 text-white rounded hover:bg-amber-700">1</button>
+                    <button class="w-10 h-10 bg-amber-100 text-amber-600 rounded hover:bg-amber-200">2</button>
+                    <button class="w-10 h-10 bg-amber-100 text-amber-600 rounded hover:bg-amber-200">3</button>
+                    <button class="px-4 h-10 bg-amber-100 text-amber-600 rounded hover:bg-amber-200">Next</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Tertarik Mendaftarkan UMKM Anda?</h2>
+            <p class="text-gray-600 text-lg mb-8">Kami menyediakan kemudahan bagi pelaku usaha lokal atau Penyandang UMKM yang ingin menjual produk terampil. Daftarkan UMKM Anda.</p>
+            <button class="bg-amber-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-700">Daftar Sekarang</button>
+            <div class="mt-6 text-gray-500 text-sm">© 2024 UMKM Panaikang. All rights reserved.</div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t pt-8 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-y-8">
+            <div class="flex items-center space-x-3">
+                <img src="images/logo.png" alt="UMKM Panaikang" class="w-10 h-10">
+                <span class="text-base font-bold text-gray-800">UMKM PANAIKANG</span>
+            </div>
+            <div class="space-x-10 text-center">
+                <a href="#" class="text-gray-700 hover:text-amber-600">Beranda</a>
+                <a href="#" class="text-gray-700 hover:text-amber-600">Kategori</a>
+                <a href="#" class="text-gray-700 hover:text-amber-600">Tentang Kami</a>
+            </div>
+            <div class="flex space-x-4">
+                <a href="#" class="p-2 rounded-full border border-gray-300 hover:bg-gray-100 text-gray-700"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="p-2 rounded-full border border-gray-300 hover:bg-gray-100 text-gray-700"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="p-2 rounded-full border border-gray-300 hover:bg-gray-100 text-gray-700"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Inline JS -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'md:hidden bg-white border-t px-4 py-4 space-y-2 hidden';
+        mobileMenu.innerHTML = `
+            <a href="#" class="block text-gray-700 hover:text-amber-600 font-medium py-2">Kategori</a>
+            <a href="#" class="block text-gray-700 hover:text-amber-600 font-medium py-2">Produk UMKM</a>
+            <a href="#" class="block text-gray-700 hover:text-amber-600 font-medium py-2">UMKM</a>
+            <a href="#" class="block text-gray-700 hover:text-amber-600 font-medium py-2">About</a>
+        `;
+        mobileMenuButton.parentNode.parentNode.appendChild(mobileMenu);
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        const API_URL = "https://script.google.com/macros/s/AKfycbwJMt9q_sR4QHWeN3FTjLiyfzIdy63oIFhoXa4RfrkpMtgR5JY1jIO7ZVnfUxNhBqGV/exec";
+
+        async function loadUMKMMap() {
+            const res = await fetch(`${API_URL}?table=umkm`);
+            const { data } = await res.json();
+            return data.reduce((map, u) => { map[u.id] = u.name; return map; }, {});
+        }
+
+        async function loadProducts() {
+            try {
+                const UMKMMap = await loadUMKMMap();
+                const res = await fetch(`${API_URL}?table=produks`);
+                const { data } = await res.json();
+                const container = document.getElementById("product-list");
+                container.innerHTML = "";
+                const template = document.getElementById('product-card-template');
+                data.forEach(p => {
+                    const card = template.content.cloneNode(true);
+                    const img = card.querySelector('[data-src]');
+                    img.src = p.image1;
+                    img.alt = p.name;
+                    card.querySelector('[data-name]').textContent = p.name;
+                    card.querySelector('[data-umkm]').textContent = UMKMMap[p.umkm_id] || '—';
+                    card.querySelector('[data-price]').textContent = `Rp ${Number(p.price).toLocaleString('id')}`;
+                    container.appendChild(card);
+                });
+            } catch (err) {
+                console.error(err);
+                document.getElementById('product-list').innerHTML = '<p class="text-red-500 text-center">Gagal memuat produk</p>';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', loadProducts);
+    </script>
+</body>
+
+</html>
