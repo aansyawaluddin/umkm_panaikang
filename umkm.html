@@ -85,6 +85,8 @@
     <section class="py-12 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div id="umkm-list" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
+            <div id="loading-umkm" class="text-center text-gray-500 mb-4">Memuat data umkm...</div>
+
         </div>
     </section>
 
@@ -189,6 +191,7 @@
 
         async function loadUMKMs() {
             try {
+                const loadingEl = document.getElementById('loading-umkm');
                 const categoryMap = await loadCategories();
                 const res = await fetch(`${API_URL}?table=umkm`);
                 const { data, error } = await res.json();

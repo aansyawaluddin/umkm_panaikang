@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,6 +86,7 @@
             </template>
 
             <div id="kategori-list" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+            <div id="loading-kategori" class="text-center text-gray-500 mb-4">Memuat data kategori...</div>
         </div>
     </section>
 
@@ -115,6 +117,7 @@
             </template>
 
             <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"></div>
+            <div id="loading-produk" class="text-center text-gray-500 mb-4">Memuat data produk...</div>
 
             <!-- Show More Button -->
             <div class="text-center">
@@ -129,20 +132,36 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="py-16 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">Tertarik Mendaftarkan UMKM Anda?</h2>
-            <p class="text-gray-600 text-lg mb-8">
-                Kami menyediakan kemudahan bagi pelaku usaha lokal atau Penyandang UMKM yang ingin menjual produk
-                terampil. Daftarkan UMKM Anda.
-            </p>
-            <button
-                class="bg-amber-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-700 transition duration-300">
-                Daftar Sekarang
-            </button>
-            <div class="mt-6 text-center text-gray-500 text-sm">
-                © 2024 UMKM Panaikang. All rights reserved.
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Judul -->
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">
+                Bagikan dukunganmu dengan
+            </h2>
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
+                #UMKMPanaikang
+            </h2>
+            <div class="grid grid-cols-4 grid-rows-2 gap-4 justify-center">
+                <div class="col-span-2 row-span-1">
+                    <img src="/images/1.png" alt="UMKM 1"
+                        class="w-[451px] h-[312px] object-cover rounded-lg shadow-md" />
+                </div>
+                <div class="col-span-1 row-span-2 relative -mb-5 -ml-20">
+                    <img src="/images/2.png" alt="UMKM 2"
+                        class="w-[295px] h-[392px] object-cover rounded-lg shadow-md" />
+                </div>
+                <div class="col-span-1 row-span-1">
+                    <img src="/images/3.png" alt="UMKM 3"
+                        class="w-[290px] h-[348px] object-cover rounded-lg shadow-md" />
+                </div>
+                <div class="col-span-1 row-span-1">
+                    <img src="/images/4.png" alt="UMKM 4"
+                        class="w-[178px] h-[242px] object-cover rounded-lg shadow-md" />
+                </div>
+                <div class="col-span-2 row-span-1">
+                    <img src="/images/5.png" alt="UMKM 5"
+                        class="w-[344px] h-[242px] object-cover rounded-lg shadow-md" />
+                </div>
             </div>
         </div>
     </section>
@@ -190,6 +209,9 @@
         const API_URL = "https://script.google.com/macros/s/AKfycbwJMt9q_sR4QHWeN3FTjLiyfzIdy63oIFhoXa4RfrkpMtgR5JY1jIO7ZVnfUxNhBqGV/exec";
 
         async function loadKategoris() {
+            const loadingEl = document.getElementById('loading-kategori');
+            loadingEl.style.display = 'block';
+
             const res = await fetch(`${API_URL}?table=kategori`);
             const { data, error } = await res.json();
             if (error) throw new Error(error);
@@ -204,7 +226,10 @@
                     .replace('__DESC__', k.description || '');
                 container.insertAdjacentHTML('beforeend', html);
             });
+
+            loadingEl.style.display = 'none';
         }
+
 
         async function loadUMKMMap() {
             const res = await fetch(`${API_URL}?table=umkm`);
@@ -213,6 +238,8 @@
         }
 
         async function loadProducts() {
+            const loadingEl = document.getElementById('loading-produk');
+            loadingEl.style.display = 'block';
             const UMKMMap = await loadUMKMMap();
             const res = await fetch(`${API_URL}?table=produks`);
             const { data, error } = await res.json();
@@ -224,13 +251,26 @@
             const tpl = document.getElementById('template-produk').innerHTML;
 
             featured.forEach(p => {
+                let priceFormatted;
+                if (String(p.price).includes('-')) {
+                    const [minRaw, maxRaw] = String(p.price).split('-');
+                    const min = Number(minRaw.replace(/\D/g, '')).toLocaleString('id');
+                    const max = Number(maxRaw.replace(/\D/g, '')).toLocaleString('id');
+                    priceFormatted = `${min} - ${max}`;
+                } else {
+                    priceFormatted = Number(p.price).toLocaleString('id');
+                }
+
                 let html = tpl
                     .replace(/__IMG__/g, p.image1)
                     .replace(/__NAME__/g, p.name)
                     .replace(/__UMKM__/g, UMKMMap[p.umkm_id] || '-')
-                    .replace(/__PRICE__/g, Number(p.price).toLocaleString('id'));
+                    .replace(/__PRICE__/g, priceFormatted);
+
                 container.insertAdjacentHTML('beforeend', html);
             });
+
+            loadingEl.style.display = 'none';
         }
 
         window.addEventListener('DOMContentLoaded', async () => {
