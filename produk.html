@@ -56,9 +56,8 @@
 
   <!-- Template for Product Card -->
   <template id="product-card-template">
-    <div class="group bg-white rounded-lg shadow-sm overflow-hidden transition duration-300 hover:shadow-md relative">
-      <div
-        class="overlay hidden group-hover:flex absolute inset-0 bg-[#3A3A3A] bg-opacity-90 text-white items-center justify-center text-sm font-medium rounded-lg transition duration-300">
+    <a href="detailumkm.html?id=__UMKM_ID__" class="group block bg-white rounded-lg shadow-sm overflow-hidden transition duration-300 hover:shadow-md relative">
+      <div class="overlay hidden group-hover:flex absolute inset-0 bg-[#3A3A3A] bg-opacity-90 text-white items-center justify-center text-sm font-medium rounded-lg transition duration-300">
         Lihat Produk
       </div>
       <div class="aspect-square bg-gray-200 flex items-center justify-center">
@@ -69,7 +68,7 @@
         <p class="text-sm text-gray-500 mb-2" data-umkm></p>
         <p class="text-lg font-bold text-amber-600" data-price></p>
       </div>
-    </div>
+    </a>
   </template>
 
   <!-- Products Grid -->
@@ -88,10 +87,8 @@
   <section class="py-16 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl font-bold text-gray-800 mb-4">Tertarik Mendaftarkan UMKM Anda?</h2>
-      <p class="text-gray-600 text-lg mb-8">Kami menyediakan kemudahan bagi pelaku usaha lokal atau Penyandang
-        UMKM yang ingin menjual produk terampil. Daftarkan UMKM Anda.</p>
-      <button class="bg-amber-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-700">Daftar
-        Sekarang</button>
+      <p class="text-gray-600 text-lg mb-8">Kami menyediakan kemudahan bagi pelaku usaha lokal atau Penyandang UMKM yang ingin menjual produk terampil. Daftarkan UMKM Anda.</p>
+      <button class="bg-amber-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-700">Daftar Sekarang</button>
       <div class="mt-6 text-gray-500 text-sm">© 2024 UMKM Panaikang. All rights reserved.</div>
     </div>
   </section>
@@ -128,7 +125,7 @@
     const mobileMenu = document.getElementById('mobileMenu');
     mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-    const API_URL = "https://script.google.com/macros/s/AKfycbwJMt9q_sR4QHWeN3FTjLiyfzIdy63oIFhoXa4RfrkpMtgR5JY1jIO7ZVnfUxNhBqGV/exec";
+    const API_URL = "https://script.google.com/macros/s/AKfycbyZoXzvXendMB6fkKek7h4NI7WKe6X-FJY31FVyuFRt5vJ5j-tAsJ2EY8pppLTwvEHI/exec";
 
     let currentPage = 1;
     const itemsPerPage = 8;
@@ -161,7 +158,6 @@
     }
 
     function renderProducts() {
-      const loadingEl = document.getElementById('loading-produk');
       const container = document.getElementById("product-list");
       container.innerHTML = "";
       const template = document.getElementById('product-card-template');
@@ -171,6 +167,8 @@
 
       pageProducts.forEach(p => {
         const card = template.content.cloneNode(true);
+        const anchor = card.querySelector('a');
+        anchor.href = `detailumkm.html?id=${p.umkm_id}`;
         const img = card.querySelector('[data-src]');
         img.src = p.image1;
         img.alt = p.name;
@@ -192,7 +190,6 @@
         container.appendChild(card);
       });
     }
-
 
     function renderPagination() {
       const totalPages = Math.ceil(allProducts.length / itemsPerPage);
